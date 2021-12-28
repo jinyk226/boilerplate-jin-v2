@@ -1,90 +1,9 @@
 BELOW ARE GENERAL TEMPLATES TO BUILD DIFFERENT PORTIONS OF A WEBPAGE.
 
-BASIC FORMAT
-```
-__________________________________
-boilerplate-jin-v2
-| .babelrc
-| .env
-| .gitignore
-| package.json
-| README.md
-| server.js*
-| weback.config.js*
-|-- app (FOLDER)
-|--|-- app.js (COMPILER)
-|--|
-|--|-- components (FOLDER)
-|--|--|-- routes.js* (compiler)
-|--|--|-- form.js (example1)
-|--|--|-- navBar.js (example2)
-|--|--|-- puppiesPage.js (example3)
-|--|
-|--|-- redux (FOLDER)
-|--|--|-- index.js (compiler)
-|--|--|-- authenticate.js (example1)
-|--|--|-- puppies.js (example2)
-|--|--|-- singlePuppy.js (example3)
-|
-|-- public (FOLDER)
-|--|-- bundle.js (BUNDLE)
-|--|-- index.html*
-|--|-- style.css
-|
-|-- server (FOLDER)
-|--|-- index.js*
-|--|
-|--|-- api (FOLDER)
-|--|--|-- index.js (compiler)
-|--|--|-- puppies.js (example1)
-|--|--|-- kittens.js (example2)
-|--|
-|--|-- auth (FOLDER)
-|--|--|-- index.js
-|--|
-|--|-- db (FOLDER)
-|--|--|-- index.js* (compiler)
-|--|--|-- db.js*
-|--|--|-- puppy.js (example1)
-|--|--|-- kitten.js (example2)
-|--|--|-- user.js (example3)
-__________________________________
+AT THE BOTTOM OF THE README, YOU WILL FIND A BASIC FORMAT WHICH WILL BE A GENERAL OVERVIEW
 
-FOLDER      This is a folder
-COMPILER    This is the FINAL compiler
-BUNDLE      This is the FINAL bundle created by the COMPILER
-utility     This is a utility file that's used in another code
-compiler    This gathers other files (likely to send to another file)
+OF THE BOILERPLATE'S FILE STRUCTURE.
 
-*
-~/server.js
-  THIS WILL SET UP YOUR CONNECTION BETWEEN A PORT AND YOUR BACKEND ROUTES IN ~/server/index.js.
-
-~/webpack.config.js
-  THIS CONFIGURATION FILE WILL ALLOW OUR PROGRAM TO PROPERLY COMPILE EVERYTHING WE'VE WRITTEN
-  INTO A FORMAT THAT ALL/MOST BROWSERS ARE ABLE TO SEE/INTERACT WITH.
-
-~/app/components/routes.js
-  ALL ROUTES ARE GATHERED HERE BEFORE IT IS SENT TO ~/app/app.js TO SEND FOR FINAL COMPILE.
-
-~/public/index.html
-  AFTER ~/app/app.js IS COMPILED, IT IS BUNDLED INTO AN HTML-READABLE FORMAT IN ~/public/bundle.js.
-  ~/public/index.html WILL INCLUDE <script async defer src='./bundle.js'></script> WHICH WILL
-  ADD ALL OF OUR JAVASCRIPT WORK TO OUR BROWSER'S HTML PAGE, WHICH IS WHAT WE ULTIMATELY SEE!
-
-~/server/index.js
-  COMPILES ALL ROUTES. IN THIS CASE, IT WILL COMPILE ALL '/api/' & '/auth/' BACKEND ROUTES
-
-~/server/db/index.js
-  THIS WILL NOT ONLY COMPILE ALL FILES IN ~/server/db (FOLDER), IT WILL ALSO:
-  - SET UP SEQUELIZE RELATIONSHIPS
-  - EXPORT OBJECTS TO ALLOW THE REST OF YOUR CODE A PROPER ACCESSPOINT/ROUTE TO
-    INTERACT WITH THE DATABASE
-
-~/server/db/db.js
-  THIS IS WHERE YOUR DATABASE REFERENCE IS ACTUALLY CREATED AND BE REFERENCED
-  FOR EVERY FILE IN ~/server/db (FOLDER)
-```
 
 ======================================================
 
@@ -198,3 +117,91 @@ FRONT END (react/redux):
 AUTHENTICATION (jsonwebtoken bcrypt):
 
 `npm install jsonwebtoken bcrypt history`
+
+======================================================
+
+BASIC FORMAT
+```
+__________________________________
+boilerplate-jin-v2
+| .babelrc
+| .env
+| .gitignore
+| package.json
+| README.md
+| server.js*
+| weback.config.js*
+|-- app (FOLDER)
+|--|-- app.js (COMPILER)
+|--|
+|--|-- components (FOLDER)
+|--|--|-- routes.js* (compiler)
+|--|--|-- form.js (example1)
+|--|--|-- navBar.js (example2)
+|--|--|-- puppiesPage.js (example3)
+|--|
+|--|-- redux (FOLDER)
+|--|--|-- index.js (compiler)
+|--|--|-- authenticate.js (example1)
+|--|--|-- puppies.js (example2)
+|--|--|-- singlePuppy.js (example3)
+|
+|-- public (FOLDER)
+|--|-- bundle.js (BUNDLE)
+|--|-- index.html*
+|--|-- style.css
+|
+|-- server (FOLDER)
+|--|-- index.js*
+|--|
+|--|-- api (FOLDER)
+|--|--|-- index.js (compiler)
+|--|--|-- puppies.js (example1)
+|--|--|-- kittens.js (example2)
+|--|
+|--|-- auth (FOLDER)
+|--|--|-- index.js
+|--|
+|--|-- db (FOLDER)
+|--|--|-- index.js* (compiler)
+|--|--|-- db.js*
+|--|--|-- puppy.js (example1)
+|--|--|-- kitten.js (example2)
+|--|--|-- user.js (example3)
+__________________________________
+
+FOLDER      This is a folder
+COMPILER    This is the FINAL compiler
+BUNDLE      This is the FINAL bundle created by the COMPILER
+utility     This is a utility file that's used in another code
+compiler    This gathers other files (likely to send to another file)
+
+*
+~/server.js
+  THIS WILL SET UP YOUR CONNECTION BETWEEN A PORT AND YOUR BACKEND ROUTES IN ~/server/index.js.
+
+~/webpack.config.js
+  THIS CONFIGURATION FILE WILL ALLOW OUR PROGRAM TO PROPERLY COMPILE EVERYTHING WE'VE WRITTEN
+  INTO A FORMAT THAT ALL/MOST BROWSERS ARE ABLE TO SEE/INTERACT WITH.
+
+~/app/components/routes.js
+  ALL ROUTES ARE GATHERED HERE BEFORE IT IS SENT TO ~/app/app.js TO SEND FOR FINAL COMPILE.
+
+~/public/index.html
+  AFTER ~/app/app.js IS COMPILED, IT IS BUNDLED INTO AN HTML-READABLE FORMAT IN ~/public/bundle.js.
+  ~/public/index.html WILL INCLUDE <script async defer src='./bundle.js'></script> WHICH WILL
+  ADD ALL OF OUR JAVASCRIPT WORK TO OUR BROWSER'S HTML PAGE, WHICH IS WHAT WE ULTIMATELY SEE!
+
+~/server/index.js
+  COMPILES ALL ROUTES. IN THIS CASE, IT WILL COMPILE ALL '/api/' & '/auth/' BACKEND ROUTES
+
+~/server/db/index.js
+  THIS WILL NOT ONLY COMPILE ALL FILES IN ~/server/db (FOLDER), IT WILL ALSO:
+  - SET UP SEQUELIZE RELATIONSHIPS
+  - EXPORT OBJECTS TO ALLOW THE REST OF YOUR CODE A PROPER ACCESSPOINT/ROUTE TO
+    INTERACT WITH THE DATABASE
+
+~/server/db/db.js
+  THIS IS WHERE YOUR DATABASE REFERENCE IS ACTUALLY CREATED AND BE REFERENCED
+  FOR EVERY FILE IN ~/server/db (FOLDER)
+```
