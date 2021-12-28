@@ -2,7 +2,6 @@ BELOW ARE GENERAL TEMPLATES TO BUILD DIFFERENT PORTIONS OF A WEBPAGE.
 
 BASIC FORMAT
 ```
-<!--
 __________________________________
 boilerplate-jin-v2
 | .babelrc
@@ -85,19 +84,19 @@ compiler    This gathers other files (likely to send to another file)
 ~/server/db/db.js
   THIS IS WHERE YOUR DATABASE REFERENCE IS ACTUALLY CREATED AND BE REFERENCED
   FOR EVERY FILE IN ~/server/db (FOLDER)
-
-
--->
 ```
 
 ======================================================
+
 FIRST STEP
 
 Don't expect to have step 1, 2, 3. However, first thing is first:
 - Connect your new project file to github; follow github instructions to create a new repo!
 - Create your package.json file with `npm init -y` (the '-y' is shorthand for
   '--yes' which skips the questionnaire altogether)
+
 ======================================================
+
 SET UP YOUR COMPILER
 
 This boilerplate/template is being created with the intention of making a web page/application.
@@ -185,15 +184,17 @@ module.exports = {
 ======================================================
 
 SERVER (express/psql/sequelize):
-npm install express pg sequelize
+
+`npm install express pg sequelize`
 
 ======================================================
 
 FRONT END (react/redux):
-npm install react react-dom react-redux react-router react-router-dom redux redux-thunk styled-components axios
+
+`npm install react react-dom react-redux react-router react-router-dom redux redux-thunk styled-components axios`
 
 ======================================================
 
 AUTHENTICATION (jsonwebtoken bcrypt):
 
-npm install jsonwebtoken bcrypt history
+`npm install jsonwebtoken bcrypt history`
