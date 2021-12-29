@@ -1,7 +1,6 @@
 BELOW ARE GENERAL TEMPLATES TO BUILD DIFFERENT PORTIONS OF A WEBPAGE.
 
 AT THE BOTTOM OF THE README, YOU WILL FIND A BASIC FORMAT WHICH WILL BE A GENERAL OVERVIEW
-
 OF THE BOILERPLATE'S FILE STRUCTURE.
 
 
@@ -11,6 +10,25 @@ FIRST STEP
 
 Don't expect to have step 1, 2, 3. However, first thing is first:
 - Connect your new project file to github; follow github instructions to create a new repo!
+- Create a .gitignore file before beginning to install multiple npm packages:
+  .gitignore:
+    ```
+    # Ignore all node_modules
+    node_modules/*
+
+    # Compiled JS
+    public/bundle.js
+    public/bundle.js.map
+
+    # NPM errors
+    npm-debug.log
+
+    # OSX
+    .DS_Store
+
+    # env
+    .env
+    ```
 - Create your package.json file with `npm init -y` (the '-y' is shorthand for
   '--yes' which skips the questionnaire altogether)
 
@@ -36,7 +54,31 @@ is set up, you should be able to run `npm start` to have your code run.
 
 INSTALL IN THE TERMINAL: BABEL/WEBPACK
 ```
-npm install --save-dev webpack webpack-dev-server nodemon @babel/core babel-loader @babel/preset-env @babel/polyfill style-loader css-loader
+npm install --save-dev webpack webpack-cli webpack-dev-server nodemon @babel/core babel-loader @babel/preset-env @babel/polyfill style-loader css-loader
+```
+
+YOUR CURRENT FILES:
+```
+boilerplate-jin-v2
+| .gitignore
+| package.json
+| pacage-lock.json
+| node_modules (FOLDER)
+```
+
+CREATE/EDIT FILES:
+```
+~/package.json
+  UPDATE "main" FROM `"main": "index.js"` TO `"main": "server.js"`
+  UPDATE "scripts"; COPY/PASTE THE BELOW CODE
+
+~/webpack.config.js
+  CREATE THE FILE
+  UPDATE; COPY/PASTE THE BELOW CODE
+
+~/.babelrc
+  CREATE THE FILE
+  UPDATE; COPY/PASTE THE BELOW CODE
 ```
 
 package.json:
@@ -99,22 +141,86 @@ module.exports = {
 
 ```
 
+Now that you've done that, if you review ~/webpack.config.js, it will explain the overall
+flow of our application:
+
+1. entry: get the data from '~/app/app.js'
+2. output: output the data to '~/public/' and create a file with filename: 'bundle.js'
+3. fancy things to allow our fancy features to work and simplify our workspace
+
+Now that we know that, there's an obvious problem: Our file structure doesn't support this.
+
+Yet!
+
+CREATE FOLDERS/FILES:
+```
+~/server.js (SERVER)
+  CREATE
+
+~/app (FOLDER)
+  CREATE
+
+~/app/app.js (COMPILER)
+  CREATE
+
+~/public (FOLDER)
+  CREATE
+```
+
+Remember, we need the '~/app/app.js' to read it. However, for the 'bundle.js', we just need
+the folder so it can be bundled by our webpack api!
+
+WE CAN'T RUN 'npm start' YET! We need a front end and back end!
+
+'npm start' runs two commands: 'build-watch' and 'start-server'. Put simply:
+
+'build-watch': runs webpack, which will run our front-end
+'start-server': runs nodemon, which will run our back-end
+
+~/public/ is a folder that will hold our front end. Inside is our 'bundle.js'
+file, and our basic html structure, with an 'index.html' and 'style.css' in our
+application. Go to the FRONT END section to learn how to build this! And
+remember: THIS BOILERPLATE ASSUMES WE ARE RUNNING A REACT-REDUX APPLICATION!
+
+~/server.js is where the back end of our application is connected to an online
+server. In this case, we will locally host this ourselves. Go to the BACK
+END/SERVER section to learn how to build this!
+
+YOUR CURRENT FILES:
+```
+boilerplate-jin-v2
+| .babelrc
+| .gitignore
+| package.json
+| pacage-lock.json
+| server.js
+| app (FOLDER)
+|-- app.js
+| public (FOLDER)
+| node_modules (FOLDER)
+```
 
 ======================================================
 
-SERVER (express/psql/sequelize):
+BACK END/SERVER (with PSQL)
 
-`npm install express pg sequelize`
-
-======================================================
-
-FRONT END (react/redux):
-
-`npm install react react-dom react-redux react-router react-router-dom redux redux-thunk styled-components axios`
+INSTALL IN THE TERMINAL: EXPRESS/PG/SEQUELIZE
+```
+npm install express pg sequelize
+```
 
 ======================================================
 
-AUTHENTICATION (jsonwebtoken bcrypt):
+FRONT END
+
+INSTALL IN THE TERMINAL: REACT/REDUX/STYLED-COMPONENTS/AXIOS
+```
+npm install react react-dom react-redux react-router react-router-dom redux redux-thunk styled-components axios
+```
+
+======================================================
+
+AUTHENTICATION (jsonwebtoken bcrypt)
 
 `npm install jsonwebtoken bcrypt history`
 
@@ -129,7 +235,7 @@ boilerplate-jin-v2
 | .gitignore
 | package.json
 | README.md
-| server.js*
+| server.js* (SERVER)
 | weback.config.js*
 |-- app (FOLDER)
 |--|-- app.js (COMPILER)
@@ -173,12 +279,13 @@ __________________________________
 FOLDER      This is a folder
 COMPILER    This is the FINAL compiler
 BUNDLE      This is the FINAL bundle created by the COMPILER
+SERVER      This is the SERVER for your
 utility     This is a utility file that's used in another code
 compiler    This gathers other files (likely to send to another file)
 
 *
 ~/server.js
-  THIS WILL SET UP YOUR CONNECTION BETWEEN A PORT AND YOUR BACKEND ROUTES IN ~/server/index.js.
+  THIS WILL SET UP YOUR CONNECTION BETWEEN A PORT AND YOUR FRONTEND ROUTES IN ~/server/index.js.
 
 ~/webpack.config.js
   THIS CONFIGURATION FILE WILL ALLOW OUR PROGRAM TO PROPERLY COMPILE EVERYTHING WE'VE WRITTEN
