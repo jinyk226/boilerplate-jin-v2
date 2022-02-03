@@ -54,7 +54,7 @@ is set up, you should be able to run `npm start` to have your code run.
 
 INSTALL IN THE TERMINAL: BABEL/WEBPACK
 ```
-npm install --save-dev webpack webpack-cli webpack-dev-server nodemon @babel/core babel-loader @babel/preset-env @babel/polyfill style-loader css-loader
+npm install --save-dev webpack webpack-dev-server nodemon @babel/core babel-loader @babel/preset-env @babel/polyfill style-loader css-loader @babel/preset-react
 ```
 
 YOUR CURRENT FILES:
@@ -172,10 +172,14 @@ the folder so it can be bundled by our webpack api!
 
 WE CAN'T RUN 'npm start' YET! We need a front end and back end!
 
+
+
 'npm start' runs two commands: 'build-watch' and 'start-server'. Put simply:
 
-'build-watch': runs webpack, which will run our front-end
-'start-server': runs nodemon, which will run our back-end
+- 'build-watch': runs webpack, which will run our front-end
+- 'start-server': runs nodemon, which will run our back-end
+
+
 
 ~/public/ is a folder that will hold our front end. Inside is our 'bundle.js'
 file, and our basic html structure, with an 'index.html' and 'style.css' in our
