@@ -52,9 +52,9 @@ not mean they should be deprived of the good we want to share with the public!
 The package.json scripts should look familiar to most npm/node users. Once everything
 is set up, you should be able to run `npm start` to have your code run.
 
-INSTALL IN THE TERMINAL: BABEL/WEBPACK
+INSTALL IN THE TERMINAL: BABEL/WEBPACK/NODEMON
 ```
-npm install --save-dev webpack webpack-dev-server nodemon @babel/core babel-loader @babel/preset-env @babel/polyfill style-loader css-loader @babel/preset-react
+npm install --save-dev webpack webpack-dev-server nodemon @babel/core babel-loader @babel/preset-env @babel/polyfill style-loader css-loader @babel/preset-react nodemon
 ```
 
 YOUR CURRENT FILES:
@@ -211,6 +211,115 @@ BACK END/SERVER (with PSQL)
 INSTALL IN THE TERMINAL: EXPRESS/PG/SEQUELIZE
 ```
 npm install express pg sequelize
+```
+
+CREATE FOLDERS/FILES:
+```
+~/server (FOLDER)
+  CREATE
+
+~/server/api (FOLDER)
+  CREATE
+
+~/server/index.js (FOLDER)
+  CREATE
+  UPDATE; COPY/PASTE THE BELOW CODE
+```
+
+~/server/index.js:
+```
+const express = require('express')
+const path = require('path')
+
+const app = express()
+
+// Parse incoming requests with JSON payloads (Plain english: Formats incoming requests to JSON format for our code to read)
+app.use(express.json())
+
+// Allow files in public folder to be accessible by our express app
+app.use(express.static(path.join(__dirname, '../public')))
+
+// 400 Error Handler: Send index.html for any other requests
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'))
+})
+
+// 500 Error handler
+app.use((req, res, next, err) => {
+  res.status(err.status || 500).send(err.message || 'Internal server error')
+})
+
+module.exports = app
+```
+
+This ~/server/index.js file will have all our backend routes gathered up and 
+exported. At this time, we have a 400 error handler which will handle all routes, 
+especially because we can see no express routes have been defined yet. If there 
+is an error in the code itself, we will display a custom 500 error handler.
+
+Now, let's add a few lines of code to server.js to import our app and connect it to a server for us to listen in!
+
+~/server.js:
+```
+const app = require('./server/index')
+const PORT = 8000
+
+
+app.listen(PORT, () => console.log(`Serving on port ${PORT}`))
+
+```
+
+Now, for testing purposes, ensure you have a ~/public/index.html file. IF YOU 
+DO NOT, CREATE ~/public/index.html AND USE THIS AS A PLACEHOLDER FOR TESTING:
+``` html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello title</title>
+</head>
+<body>
+    <h3>Hello body</h3>
+</body>
+</html>
+```
+
+At this time, you should be able to run the following command:
+```
+npm run start-server
+```
+
+If your localhost:8000 (or otherwise defined server number) displays your HTML, congratulations! 
+Your backend route is being served! Now, let's add in some routes next...
+
+
+
+~/server/index.js (add this line ABOVE the 400 error route):
+```
+// api routes
+app.use('/api', require('./api'))
+```
+
+Now that we are requesting './api', we require two files:
+
+
+CREATE/EDIT FILES:
+```
+~/server/api (FOLDER)
+  CREATE
+
+~/server/api/index.js
+  CREATE
+  UPDATE; COPY/PASTE THE BELOW CODE
+```
+
+~/server/api/index.js:
+```
+const router = require('express').Router()
+
+module.exports = router
 ```
 
 ======================================================
