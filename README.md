@@ -319,7 +319,34 @@ CREATE/EDIT FILES:
 ```
 const router = require('express').Router()
 
+router.get('/', (req, res, next) => {
+    res.send('test')
+})
+
 module.exports = router
+```
+
+Add in your routes as needed from here. You are now complete with setting up your basic backend!
+
+YOUR CURRENT FILES:
+```
+boilerplate-jin-v2
+| .babelrc
+| .gitignore
+| package.json
+| pacage-lock.json
+| server.js
+| webpack.config.js
+| app (FOLDER)
+|-- app.js
+| public (FOLDER)
+| node_modules (FOLDER)
+| public (FOLDER)
+|-- index.html
+| server (FOLDER)
+|-- index.js
+|-- api (FOLDER)
+|--|-- index.js
 ```
 
 ======================================================
@@ -327,9 +354,7 @@ module.exports = router
 FRONT END
 
 INSTALL IN THE TERMINAL: REACT/REDUX/STYLED-COMPONENTS/AXIOS
-```
-npm install react react-dom react-redux react-router react-router-dom redux redux-thunk styled-components axios
-```
+`npm install react react-dom react-redux react-router react-router-dom redux redux-thunk styled-components axios`
 
 ======================================================
 
