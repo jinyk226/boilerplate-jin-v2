@@ -1,5 +1,6 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom'
+import Filler from './filler.js'
 
 const app = () => {
     return (
@@ -12,14 +13,6 @@ const app = () => {
         </Router>
     </div>
   )
-}
-
-const Filler = () => {
-    return (
-        <div>
-            This is a filler div
-        </div>
-    )
 }
 
 

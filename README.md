@@ -432,6 +432,35 @@ Generally, this 'Filler' div would be imported from a different file. In this ca
 
 Now, assuming your back-end is set up as well, you should be able to run `npm run start` and see that the default path of `localhost:8000/` shows the filler div text, and any other URLs at this time will redirect to that path as well.
 
+Now, the next step is to create this Filler component in a separate file and import it!
+
+CREATE/EDIT FILES:
+```
+~/app/components/filler.js
+  CREATE
+  UPDATE; COPY/PASTE THE BELOW CODE
+```
+
+~/app/components/filler.js
+```
+export default () => {
+    return (
+        <div>
+            This is a filler div
+        </div>
+    )
+}
+```
+
+Now from `~/app/components/routes.js` we can remove the Filler function that was defined in the same file and instead import at the top of the file as such:
+
+~/app/components/routes.js:
+```
+import Filler from './filler.js'
+```
+
+With this, our basic React file structure is complete! Redux can now be added as needed, along with any other tools such as CSS.
+
 ======================================================
 
 AUTHENTICATION (jsonwebtoken bcrypt)
