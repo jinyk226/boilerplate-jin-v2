@@ -339,7 +339,6 @@ boilerplate-jin-v2
 | webpack.config.js
 | app (FOLDER)
 |-- app.js
-| public (FOLDER)
 | node_modules (FOLDER)
 | public (FOLDER)
 |-- index.html
@@ -460,6 +459,31 @@ import Filler from './filler.js'
 ```
 
 With this, our basic React file structure is complete! Redux can now be added as needed, along with any other tools such as CSS.
+
+YOUR CURRENT FILES:
+```
+boilerplate-jin-v2
+| .babelrc
+| .gitignore
+| package.json
+| pacage-lock.json
+| server.js
+| webpack.config.js
+| app (FOLDER)
+|-- app.js
+|-- components (FOLDER)
+|--|-- filler.js
+|--|-- routes.js
+| node_modules (FOLDER)
+| public (FOLDER)
+|-- index.html
+|-- bundle.js
+|-- bundle.js.map
+| server (FOLDER)
+|-- index.js
+|-- api (FOLDER)
+|--|-- index.js
+```
 
 ======================================================
 
