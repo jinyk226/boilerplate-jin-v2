@@ -351,10 +351,86 @@ boilerplate-jin-v2
 
 ======================================================
 
-FRONT END
+FRONT END (with React)
 
-INSTALL IN THE TERMINAL: REACT/REDUX/STYLED-COMPONENTS/AXIOS
-`npm install react react-dom react-redux react-router react-router-dom redux redux-thunk styled-components axios`
+INSTALL IN THE TERMINAL: REACT/AXIOS
+`npm install react react-dom react-router react-router-dom axios`
+
+I WILL NOT COVER REDUX IN THIS, BUT HERE ARE THE BASIC REDUX INSTALLS NEEDED IN CASE IT'S NEEDED
+
+INSTALL REDUX IF NEEDED:
+`npm install react-redux redux redux-thunk`
+
+Let's add in React to create a Single Page Application (SPA)!
+
+The first step is to add a div in our ~/public/index.html where all of our content will be rendered. Add this line to the body:
+
+~/public/index.html
+`<div id='app'></div>`
+
+Now we know where all of our React will be rendered. Our React code will be rendered from ~/public/bundle.js. As such, we will add a script tag to the head and defer as such:
+
+~/public/index.html
+`<script async defer src='./bundle.js'></script>`
+
+If we review our webpack config file, we will see the entry point for the app is ~/app/app.js. This is where React's magic will aggregate.
+
+~/app/app.js:
+```
+import React from 'react'
+import {render} from 'react-dom'
+import Routes from './components/routes.js'
+
+render(
+    <Routes />, document.getElementById('app')
+)
+```
+
+As you can see, we will need to import a React component!
+
+CREATE/EDIT FILES:
+```
+~/app/components (FOLDER)
+  CREATE
+
+~/app/components/routes.js
+  CREATE
+  UPDATE; COPY/PASTE THE BELOW CODE
+```
+
+~/app/components/routes.js:
+```
+import React from 'react'
+import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom'
+
+const app = () => {
+    return (
+    <div>
+        <Router>
+            <Routes>
+            <Route path='/' element={<Filler />} />
+            <Route path="*" element={<Navigate replace to="/" />} />
+            </Routes>
+        </Router>
+    </div>
+  )
+}
+
+const Filler = () => {
+    return (
+        <div>
+            This is a filler div
+        </div>
+    )
+}
+
+
+export default app
+```
+
+Generally, this 'Filler' div would be imported from a different file. In this case, we will add the filler into the same file to simplify the amount of files for testing.
+
+Now, assuming your back-end is set up as well, you should be able to run `npm run start` and see that the default path of `localhost:8000/` shows the filler div text, and any other URLs at this time will redirect to that path as well.
 
 ======================================================
 
