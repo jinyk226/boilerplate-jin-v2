@@ -54,7 +54,7 @@ is set up, you should be able to run `npm start` to have your code run.
 
 INSTALL IN THE TERMINAL: BABEL/WEBPACK/NODEMON
 ```
-npm install --save-dev webpack webpack-dev-server nodemon @babel/core babel-loader @babel/preset-env @babel/polyfill style-loader css-loader @babel/preset-react nodemon
+npm install --save-dev webpack webpack-dev-server nodemon @babel/core babel-loader @babel/preset-env @babel/polyfill @babel/preset-react
 ```
 
 YOUR CURRENT FILES:
@@ -62,7 +62,7 @@ YOUR CURRENT FILES:
 boilerplate-jin-v2
 | .gitignore
 | package.json
-| pacage-lock.json
+| package-lock.json
 | node_modules (FOLDER)
 ```
 
@@ -116,13 +116,6 @@ module.exports = {
         include: path.resolve(__dirname, './app'),
         loader: 'babel-loader'
       },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      }
     ]
   },
   devServer: {
