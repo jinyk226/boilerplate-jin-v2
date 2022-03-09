@@ -435,6 +435,8 @@ CREATE/EDIT FILES:
 
 ~/app/components/filler.js
 ```
+import React from 'react';
+
 export default () => {
     return (
         <div>
